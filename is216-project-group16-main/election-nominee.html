@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit your election</title>
+    <link rel="stylesheet" href="css/home-admin.css">
+
+    <!-- For loader animation -->
+    <link rel="stylesheet" href="css/loaderAnimation.css" />
+
+    <!-- For loader animation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- For loader animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <!-- For loader animation -->
+    <script src = 'js/loaderAnimation.js'></script>
+
+    <!-- AOS library put in head -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    
+    
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <!-- vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- old vue -->
+    <!-- <script src="https://unpkg.com/vue"></script> -->
+
+</head>
+<body>
+    <div class="se-pre-con"></div>
+    <div id = 'electionCards' v-cloak>
+        <!-- show this navbar when the screen is laptop size or larger -->
+        <div class="navbar navLaptop sticky-top" style = 'z-index: 3'>
+            <a href="voter-homepage.html" style="width:15%; padding: 0px" class="nav-button"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+    
+            <div style="display: flex; align-items: center">
+            <p id="username" class="user-name"></p>
+    
+            <div class="dropdown">
+                <div class="drop">
+                <div class="dropbtn"></div>
+                <div class="dropbtn"></div>
+                <div class="dropbtn"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="election-nominee.html" style="border-bottom: 1px solid gray" class="election-btn">Elections I am running for</a>
+                    <a href="aboutus.html" style="border-bottom: 1px solid gray;">About Us</a>
+                    <a href="contactus.html" style="border-bottom: 1px solid gray;">Contact Us</a>
+                <a href="index.html" id="logout">Log out</a>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <!-- show this nav bar when the screen is small -->
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-end navMobile sticky-top" style="display:none" >
+            <div class="container-fluid d-flex">
+            <a class="navbar-brand me-auto" href="voter-homepage.html" style="width:15%; padding: 0px"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+            <span class="navbar-text order-lg-2 me-2 user-name">
+                
+            </span>
+            <button class="navbar-toggler dropdown drop" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mt-2 mb-lg-0 text-end">
+                <li class="election-btn">
+                    <a class="nav-link" href="election-nominee.html">Elections I am running for</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactus.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" id="logoutMobile">Log out</a>
+                </li>
+            </div>
+            </div>
+        </nav>
+
+        <!-- Your elections -->
+        <div class="elections" >
+            <h1 class="header" data-aos="zoom-in-down" data-aos-duration="1500">Elections you are running in</h1>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 fadeIn">
+                <div class="col" v-for="elec in election_list">
+                <div class="card" data-aos="flip-right" data-aos-duration="800">
+                    <div class=" card-header d-flex justify-content-between align-items-center">
+                        <p class="m-0">{{elec.header}}</p>
+                        <img :id = 'elec.header + "logo"'  alt="" class="logo">
+                        <!-- <img :src = 'elec.img_src' alt="" class="logo"> -->
+                    </div>
+                    <img :id = 'elec.header + "poster"' class="card-img-top" alt="...">
+                    <!-- <img :src = 'elec.img_src' class="card-img-top" alt="..."> -->
+                    <div class="card-body text-center">
+                        <p class="card-text">Start date: {{elec.start_date}} {{elec.start_time}}</p>
+                        <p>Closing date: {{elec.end_date}} {{elec.end_time}}</p>
+                    
+                        
+                        <button class="btn btn-outline-dark w-75 mb-2 " @click = 'redirectToVoterNominee(elec.electionKey)'>View Nominees</button> <br>
+                        <button class="btn btn-outline-dark w-75" @click = 'redirect(elec.electionKey)'>Edit Your Profile</button>
+                        
+        
+                        
+                    
+        
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Firebase CDN and calls import-->
+    <script defer src='js/auth.js' type="module" ></script>
+    <script src ='js/election-nominee.js' type = 'module'></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Election</title>
+    <link rel="stylesheet" href="css/create.css">
+    <link rel="stylesheet" href="css/home-admin.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    <!--Vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+     <!-- For loader animation -->
+     <link rel="stylesheet" href="css/loaderAnimation.css" />
+
+     <!-- For loader animation -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+ 
+     <!-- For loader animation -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+     <!-- For loader animation -->
+     <script src = 'js/loaderAnimation.js'></script>
+
+</head>
+<body>
+    <!-- navbar -->
+    <!-- show this navbar when the screen is laptop size or larger -->
+    <div class="se-pre-con"></div>
+    <div class="navbar navLaptop sticky-top" id="admin_page" style="z-index: 3;">
+        <a href="home-admin.html" style="width:15%; padding: 0px;" class="nav-button"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+
+        <div style="display:flex; align-items:center;">
+            <a class="nav-button create" href="create.html">Create election</a>
+
+            <p class="user-name"></p>
+
+            <div class="dropdown">
+                <div class="drop">
+                    <div class="dropbtn"></div>
+                    <div class="dropbtn"></div>
+                    <div class="dropbtn"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="past-elections.html" style="border-bottom: 1px solid gray;">Past elections</a>
+                    <a href="aboutus.html" style="border-bottom: 1px solid gray;">About Us</a>
+                    <a href="contactus.html" style="border-bottom: 1px solid gray;">Contact Us</a>
+                    <a href="#" id="logout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- show this nav bar when the screen is small -->
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-end navMobile sticky-top" style="display:none; z-index: 3;" >
+        <div class="container-fluid d-flex">
+          <a class="navbar-brand me-auto" href="home-admin.html" style="width:15%; padding: 0px"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+          <span class="navbar-text order-lg-2 me-2 user-name">
+            
+        </span>
+          <button class="navbar-toggler dropdown drop" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-end">
+              <li class="mt-2">
+                <a class="nav-link fw-bold" href="create.html">Create election</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="past-elections.html">Past elections</a>
+              </li>
+              <li class="nav-item border-top ">
+                <a class="nav-link " href="aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="logoutMobile">Log out</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+
+  
+
+    <!-- Create -->
+   
+    <div class="form" action='#' id="create_page" action='home-admin.html'>
+        
+        <div class="container">
+            <div class="row align-items-center" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="col col-md-8">
+                    <h1 class="header">Create a new election</h1>
+                </div>
+                <!-- <div class="col-md-auto">
+                    <button class="btn btn-outline-dark">Share</btn>
+                </div> -->
+                <!-- <div class="col-md-auto">
+                    <button class="btn btn-outline-dark">Add more admins +</btn>
+                </div> -->
+                <!-- <div class="col-md-auto">
+                    <button class="btn btn-outline-dark">Delete</btn>
+                </div> -->
+            </div>
+
+            <div class="row" data-aos="fade-up" data-aos-duration="1500">
+                <div class="col-md-4" id='electiontitle'>
+                    <label for="title" class="form-label" >Election title</label>
+                    <input type="text" icreate_paged="title" class="form-control" v-model="election_title" placeholder='Enter Election Title'required @change="checkExisting(election_title)">
+                    <span id='title_err'></span>
+                </div>
+                <div class="col-md-4" id ='starttime'>
+                    <label for="start-date-time" class="form-label">Start DateTime</label>
+                    <input type="datetime-local" id="start-date-time" class="form-control" v-model="start_date_time" @change="checkDates()" required>
+                    <span id='start_err'></span>
+                </div>
+                <div class="col-md-4" id ='endtime'>
+                    <label for="end-date-time" class="form-label">End DateTime</label>
+                    <input type="datetime-local" id="end-date-time" class="form-control" v-model="end_date_time" @change="checkDates()" required>
+                    <span id='end_err'></span>
+                </div>
+
+                <div class="mt-3 w-50" id ='minvote'>
+                    Min Votes:
+                    <input type="number" class="form-control mb-4" name="min-votes" id='minVote'v-model="minVote" >
+                    <span id='vote_err'></span>
+                </div>
+
+
+            </div>
+
+                <div style="padding: 12px;">
+                    <div class="row  mt-5 p-5 pb-2 border border-dark details" data-aos="flip-down" data-aos-duration="1500">
+                        <h1 class='ps-0'style="color: #EFE7DD; font-size: 30px; padding-bottom: 2vh">Nominee and Position <small class="" style="color: #EFE7DD;">(Accepts one person at a time)</small></h1>
+
+                        <div class="col positiondetails p-0">
+                            Nominee's email:
+                            <div id='nomineeEmail'>
+                            <input type="email" class="form-control mb-4" name="nominee-emails" v-model='nominee_email' required></input>
+                            <span id='email_err'></span>
+                            </div>
+                            
+
+                            <div id='positions'>
+                                Position
+                                <input type="text" class="form-control mb-4" name="positions"  v-model='position' placeholder="Enter Position" required>
+                                <span id='position_err'></span>
+                            </div>
+                            <button id='position_button'class="btn btn-outline-dark w-100 mb-5 mt-3" @click='nominee_master_adder' >Add another position</button>
+
+                        </div>
+                        <br>
+                        
+                        
+                            
+                            
+                            <!-- <button class="btn btn-outline-dark mb-4 ms-4 add" type='button' onclick="addDetails()">Add another position</button> -->
+                           
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class=" container bottom p-3">
+                    <div class="row mt-5" data-aos="zoom-in-up" data-aos-duration="1500">
+                        <label for="voters" class="form-label m-0">Add voters (only csv files accepted):</label>
+                    </div>
+
+                    <div class="row">
+                        <!-- <div class="col-md-3 pt-2">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Select voters</option>
+                                <option value="nolin">nolin.ho.2020@scis.smu.edu.sg</option>
+                                <option value="tanya">tanyakhoo.2020@smu.edu.sg</option>
+                                <option value="fok">jiayi.fok.2020@smu.edu.sg</option>
+                            </select>
+                        </div> -->
+                        <!-- <div class="col-md-auto pt-3">
+                            <p>or</p>
+                        </div> -->
+                        <div class="col-md-3 pt-2" id='csv'>
+                            <!-- <button class="btn btn-outline-secondary">Upload file (csv) &nbsp;&nbsp;+</button> -->
+                            <input class="form-control" type="file" id="fileUpload" accept=".csv" @change="processVoterList()" />
+                            <span id='csv_err'></span>
+                        </div>
+                            
+                        
+                        <div id="voterlist" class="col mt-3" v-if="voterButtonShow">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" @click="viewNewVoters" checked>
+                                <label class="form-check-label">
+                                  View all voters
+                                </label>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div v-if="voterTableShow == true">
+
+                        <table class="table mt-3">
+                            <thead>
+                              <tr>
+
+                                <th scope="col">Email</th>
+                                <th scope="col">Delete</th>
+                            
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr v-for='email of voter_emails_raw' v-bind:id='email'>
+                                <td>{{email}}</td>
+                                <td class="d-grid gap-2"><button class="btn d-grid gap-2 btn-outline-dark" type="button" @click='deleteVoterEmail(email)'>Delete</button></td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+
+                    </div>
+
+                    <div class="row mt-5" data-aos="zoom-in-up" data-aos-duration="1500">
+                        <label for="voters" class="form-label m-0">Upload poster (jpg or png files only):</label>
+                    </div>
+                    <div class="row" data-aos="zoom-up" data-aos-duration="1500">
+                        <div class="col-md-3 pt-2" id="posterUpload">
+                            <input class="form-control" type="file" id="formFile" accept=".jpg,.png" @change="previewPoster" required>
+                            <span id='poster_err'></span>
+                            <!-- <button class="btn btn-outline-dark" @click='upload_poster'>upload poster (delete later, for testing)</button> -->
+                            <!-- <button class="btn btn-outline-dark" @click='get_poster'>get poster (delete later, for testing)</button> -->
+                        </div>
+
+
+
+                    </div>
+                    <div class="row mt-3" data-aos="zoom-in-up" data-aos-duration="1500">
+                        <div class="col-md-3 pt-2">
+                            <label for="voters" class="form-label m-0">Poster Preview:</label>
+                            <img id="frame" :src="poster_url" class="img-fluid" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="row mt-5" data-aos="zoom-in-up" data-aos-duration="1500">
+                        <label  class="form-label m-0">Upload Logo (jpg or png files only):</label>
+                    </div>
+                    <div class="row" data-aos="zoom-up" data-aos-duration="1500">
+                        <div class="col-md-3 pt-2" id='logoUpload'>
+                            <input class="form-control" type="file" id="logo" accept=".jpg,.png"  @change="previewLogo" required>
+                            <span id='logo_err'></span>
+                            <!-- <button class="btn btn-outline-dark" @click='upload_poster'>upload poster (delete later, for testing)</button> -->
+                            <!-- <button class="btn btn-outline-dark" @click='get_poster'>get poster (delete later, for testing)</button> -->
+                        </div>
+                        <div class="row mt-3" data-aos="zoom-in-up" data-aos-duration="1500">
+                            <div class="col-md-3 pt-2">
+                                <label for="voters" class="form-label m-0">Logo Preview:</label>
+                                <img id="logo" :src="logo_url" class="img-fluid" />
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="row mt-5 justify-content-md-center"  data-aos-duration="1500">
+                        <!-- <div class="col-md-auto">
+                            <button class="btn btn-outline-dark" >Start election</button>
+                        </div> -->
+                        <div class="col-md-auto ">
+                            <button class="btn btn-outline-dark " style="width: 200px;" data-bs-toggle="modal" data-bs-target="#confirmation">Publish</button>
+                        </div>
+
+                        <div class="modal" id="confirmation" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                               
+                                <div class="modal-body">
+                                  <p>Once published, voters can view your election. Do you wish to continue?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                                  <button type="button" @click='checkError()' class="btn btn-outline-dark" data-bs-dismiss="modal">Confirm</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="modal " id="CSV_DUPLI" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content"></div>
+                            
+                            <div class="modal-body">
+                                <p>Duplicates found and removed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="duplicateModal" slot="duplicateModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="duplicateModalHeader">Duplicates found</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                The duplicate voters have been removed
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="successModal" slot="successModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="votingSuccessHeader">Updated</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                The election has been created successfully
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="errorModal" slot="errorModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="errorHeader">Error!</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                Some fields have been entered incorrectly
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="nomineeErrorModal" slot="nomineeErrorModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="nomineeErrorHeader">Error</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                There is a problem with the nominee you added
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="nomineeSuccessModal" slot="nomineeSuccessModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="nomineeSuccessHeader">Nominee Added</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                A valid nominee has been added
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <!--Firebase CDN and calls import-->
+    <script src='js/auth.js' type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
+
+    <!-- js -->
+    <script src="js/create.js" ></script>
+    <script src="js/create_db.js" type="module" ></script>
+
+    <!--Papaparse for CSV-->
+    <script src=" https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+   
+    <!-- AOS CDN -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

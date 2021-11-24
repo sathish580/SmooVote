@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Google signin api call and script-->
+    <!-- <meta name="google-signin-client_id" content="822420765956-at9udeuucv5ee9gmcvl63pjio121o6da.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+
+    <link href='css/login.css' rel='stylesheet' type='text/css'>
+
+    <!-- Importing animation library -->
+    <link href='../Libraries/Catto-CSS/CSS/catto.css' rel='stylesheet' >
+    
+ 
+    <title>SmooVote</title>
+  </head>
+  <body id="loginpage">
+
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
+     
+      <div class="navbar d-flex  p-4 align-middle ">
+
+         <!-- <h3 style='border: 1px solid; box-shadow: 3px 3px 3px black; padding: 5px'  class="me-auto"> SmooVote </h3>  -->
+         <a href="#" style="width:15%; padding: 0px" class="nav-button"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+         <button type="button " class="btn btn-info btn-outline-dark h-transLeft " data-bs-toggle='modal' data-bs-target="#loginmodal">Login</button>
+
+        
+        
+      </div>
+
+      </div>
+
+      <div class="info a-bounce" >
+            
+          <small class="welcome"> Welcome to </small>
+          <p style="font-size:120px;" class='keywelcomelogo'>SmooVote</p>
+          <h1 > Your One-Stop Platform to Vote</h1>
+     
+        <!-- Animation h-transright added here-->
+        <button type="button" class="btn btn-info btn-outline-dark h-transRight" data-bs-toggle='modal' data-bs-target="#signupmodal">Sign Up</button>
+
+
+        </div>
+      
+    
+      <!-- Login form + modal -->
+      <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="ModalLable" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLable">Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <!-- <span aria-hidden="true">&times;</span> Edited the close btn in modal--> 
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <form id="loginform" action="#">
+
+                <div class="form-group">
+                  <label for="loginemail">Email address</label>
+                  <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter SMU email">
+                  <small id="emailHelp" class="form-text text-muted" >We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="loginpassword">Password</label>
+                  <input type="password" class="form-control" id="loginpassword" placeholder="Password">
+                  <span id='invalidpass'></span>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" >Login</button>
+                  </div>
+                </div>
+               
+                
+              </form>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Signup form + modal -->
+      <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="ModalLable" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" >
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLable">Signup</h5>
+              
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- <span aria-hidden="true">&times;</span> -->
+              
+            </div>
+            <div class="modal-body">
+
+              <form id="signupform" action="#">
+
+                <div class="form-group">
+                  <label for="SignupEmail">Email address</label>
+                  <input type="email" class="form-control" id="SignupEmail" aria-describedby="emailHelp" placeholder="Enter SMU email">
+                  <small id="emailHelp" class="form-text text-muted" >We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="SignupPassword">Password</label>
+                  <input type="password" class="form-control" id="SignupPassword" placeholder="Password">
+                  <span id='invalids'></span>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                  </div>
+                </div>
+               
+                
+              </form>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- <nav class="navbar fixed-bottom navbar-dark bg-transparent d-flex justify-content-end"  >
+
+        <div class="collapse " id="navbarToggleExternalContent" >
+          <div class="bg-transparent p-4 " style="height: 70px; ">
+            <p class="text-black h4" style='font-size: 13px; ' >Designed and built with all the love in the world by the SmooVote Team</p>
+            <p style='font-size: 13px;'> Stay in touch with us via our social media platforms:</p>
+            <div style='display: flex;'> 
+              <a href="https://www.instagram.com/smoovote/"><img src='../Images_Icons/twitter.png'style='margin-right: 20px;' ></a> 
+              <a href='#'><img src='../Images_Icons/instagram.png'style='margin-right: 20px;' ></a>
+              <a href='#'><img src='../Images_Icons/facebook.png' ></a>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid" >
+          <button class="navbar-toggler  btn-outline-dark border border-2 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" style="border-color: rgb(3, 33, 40) !important; margin-left: 10px;">
+            <span ><img src='../Images_Icons/arrows.png ' class="height: 10px; width: auto"></span>
+          </button>
+        </div>
+
+  
+
+       
+      </nav> -->
+      
+
+
+    <!--Firebase CDN and calls import-->
+    <script src='js/auth.js' type="module"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    
+
+    <!--JQUERY CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+  </body>
+</html>

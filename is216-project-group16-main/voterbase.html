@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voterbase</title>
+    <link rel="stylesheet" href="css/create.css" />
+    <link rel="stylesheet" href="css/home-admin.css" />
+
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--Vue -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- For loader animation -->
+    <link rel="stylesheet" href="css/loaderAnimation.css" />
+
+    <!-- For loader animation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- For loader animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <!-- For loader animation -->
+    <script src = 'js/loaderAnimation.js'></script>
+</head>
+<body>
+    <!-- navbar -->
+    <!-- show this navbar when the screen is laptop size or larger -->
+    <div class="se-pre-con"></div>
+    <div class="navbar navLaptop sticky-top" id="admin_page" style="z-index: 3;">
+        <a href="home-admin.html" style="width:15%; padding: 0px;" class="nav-button"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+
+        <div style="display:flex; align-items:center;">
+            <a class="nav-button create" href="create.html">Create election</a>
+
+            <p class="user-name"></p>
+
+            <div class="dropdown">
+                <div class="drop">
+                    <div class="dropbtn"></div>
+                    <div class="dropbtn"></div>
+                    <div class="dropbtn"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="past-elections.html" style="border-bottom: 1px solid gray;">Past elections</a>
+                    <a href="aboutus.html" style="border-bottom: 1px solid gray;">About Us</a>
+                    <a href="contactus.html" style="border-bottom: 1px solid gray;">Contact Us</a>
+                    <a href="#" id="logout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- show this nav bar when the screen is small -->
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-end navMobile sticky-top" style="display:none; z-index: 3;" >
+        <div class="container-fluid d-flex">
+          <a class="navbar-brand me-auto" href="home-admin.html" style="width:15%; padding: 0px"><img style="width: 100%" src="img/smoovote-logo.png"></a>
+          <span class="navbar-text order-lg-2 me-2 user-name">
+            
+        </span>
+          <button class="navbar-toggler dropdown drop" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-end">
+              <li class="mt-2">
+                <a class="nav-link fw-bold" href="create.html">Create election</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="past-elections.html">Past elections</a>
+              </li>
+              <li class="nav-item border-top ">
+                <a class="nav-link " href="aboutus.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="logoutMobile">Log out</a>
+              </li>
+          </div>
+        </div>
+    </nav>
+    
+    <div class="form" id="voterbase" v-cloak>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col col-md-12">
+                    <h1 class="header">Voterbase for: {{electionTitle}}</h1>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col col-md-12">
+                    <form>
+                        <div class="my-3">
+                        <label for="emailSearch" class="form-label">Search for voter</label>
+                        <input type="email" class="form-control" id="emailSearch" v-model="voter_search">
+                        <div id="emailHelp" class="form-text"></div>
+                        </div>
+                    </form>
+                </div>  
+                
+            </div>
+
+            <div class="row align-items-center">
+                
+                <div class="col col-3 col-md-auto mt-1">
+                    <button class="btn btn-outline-dark mx-3" @click="searchVoter()" type="button">
+                        <a style = 'text-decoration: none; color: inherit;'>Search</a> 
+                    </button>
+                </div>
+
+                <div class="col col-3 col-md-auto mt-1">
+                    <button class="btn btn-outline-danger btn-danger text-light mx-3 px-3" @click="clearSearch()" type="button">
+                        <a>Clear</a>
+                    </button>
+                </div>
+
+                <div class="col col-6 col-md-auto mt-1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="showAllId" @change="showAll()">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Show all voters
+                        </label>
+                    </div>              
+                </div>
+
+            </div>
+
+            <div class="row align-items-center mt-5">
+                
+                <div class="col col-md-12" v-if="allVoters">
+                    <h1 class="display-8">Voterbase</h1>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Voter Email</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody v-for="(voter, index) in voters">
+                          <tr>
+                            <th scope="row">{{index + 1}}</th>
+                            <td>{{voter}}</td>
+                            <td>
+                                <button type="button" class = 'btn btn-outline-dark text-center' v-on:click="deleteVoter(voter)"><i class="fa-solid fa-trash-can"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col col-md-12" v-else>
+                    <h1 class="display-8">Searched Voters</h1>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Voter Email</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody v-for="(voter, index) in searched_voters">
+                          <tr>
+                            <th scope="row">{{index + 1}}</th>
+                            <td>{{voter}}</td>
+                            <td>
+                                <button type="button" class = 'btn btn-outline-dark text-center' v-on:click="deleteVoter(voter)"><i class="fa-solid fa-trash-can"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="row mt-5" data-aos="zoom-in-up" data-aos-duration="1500">
+                    <label for="voters" class="form-label m-0">Add voters (only csv files accepted) (This will add to the existing voters):</label>
+                </div>
+
+                <div class="col-md-3 pt-2">
+                    <!-- <button class="btn btn-outline-secondary">Upload file (csv) &nbsp;&nbsp;+</button> -->
+                    <input class="form-control" type="file" id="fileUpload" accept=".csv" @change="processVoterList()"/>
+                </div>
+                    
+                
+                <div id="voterlist"></div>
+            </div>
+
+            <div v-if="voterTableShow == true">
+
+                <table class="table">
+                    <thead>
+                      <tr>
+
+                        <th scope="col">Email</th>
+                        <th scope="col">Delete</th>
+                    
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <tr v-for='email of voters' v-bind:id='email'>
+                        <td>{{email}}</td>
+                        <td class="d-grid gap-2"><button class="btn d-grid gap-2 btn-outline-dark" type="button" @click='deleteVoterEmail(email)'>Delete</button></td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+            </div>
+
+
+            <div class="row mt-5 justify-content-center pb-5">
+
+                <div class="col-6 col-md-auto">
+                    <button class="btn btn-danger" type="button"><a href="home-admin.html" style="text-decoration: none; color: inherit;">Cancel Changes</a></button>
+                </div>
+                
+                <div class="col-6 col-md-auto">
+                    <button id = 'saveChngBtn'  class="btn btn-outline-dark" @click="showConfirmation()"><a style="text-decoration: none; color: inherit;">Save Changes</a></button>
+                </div>
+               
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmationModal" tabindex="-1" slot="confirmationModal">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Confirmation:</h5>
+                </div>
+                <div class="modal-body">
+                    Changes made to the voterbase is permanent. Do you wish to continue?
+                </div>
+                <div class="modal-footer row">
+                    <div class="row">
+                        <button type="button" class="col btn btn-outline-dark m-1" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="col btn btn-dark m-1 text-white" data-bs-dismiss="modal" @click="showSuccessMsg">Update Voterbase</button>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div id="emailHelp" class="col-sm-12 text-center fw-bold">Updates are permanent</div>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="successModal" slot="successModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="votingSuccessHeader">Updated</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  The voterbase for {{electionTitle}} has been updated successfully
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="duplicateModal" slot="duplicateModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="duplicateModalHeader">Duplicates found</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    The duplicate voters have been removed
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+    
+</script>
+<!--Firebase CDN and calls import-->
+<script src='js/auth.js' type="module"></script>
+
+<!--Papaparse for CSV-->
+<script src=" https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
+
+<!-- Test firebase -->
+<script src = 'js/voterbase.js' type="module"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
+</html>

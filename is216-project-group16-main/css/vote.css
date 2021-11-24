@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color:rgba(255, 235, 198, 0.5) !important ;
+    font-family: 'Montserrat' !important;
+    
+}
+
+/* nav bar */
+.navbar {
+    background-color:rgb(3, 33, 40);
+    padding: 10px 30px 10px 30px !important;
+    }
+
+
+.nav-button, .nav-button:hover  {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.5vh 0;
+}
+
+.user-name {
+    color:white;
+    margin: 0 20px;
+}
+
+/* Dropdown */
+.drop {
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 6px 12px;
+    margin-left: 10px;
+}
+
+.dropbtn {
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    margin: 6px 0;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+    border-radius: 5%;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    color: black;
+    background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Elections */
+.elections {
+    margin: 10vh 5vw 0 5vw;
+}
+
+.header {
+    margin: 7vh 0;
+    color: #003844;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
+}
+
+.logo {
+    max-height:20px;
+    object-fit:contain;
+    background-color: white;
+    width: 20%;
+    padding: 0 2px;
+}
+
+.card{
+    background-color:rgba(230, 204, 156, 0.8) !important;
+    height: 100%;
+}
+
+.card-header{
+    background-color: #022a34 !important ;
+    color: white !important ;
+    font-family: 'Montserrat';
+    font-weight: bold !important;
+}
+
+.btn{
+    background-color: #ba8509 !important;
+    border-color: #ba8509  !important;
+    color: white !important;
+}
+
+.btn:hover{
+    background-color:#FFB100 !important;
+}
+
+.btn:visited{
+    border: 0px !important;
+}
+
+.btn:active{
+    border: 0px !important;
+}
+
+#specialbtn{
+    background-color: #003844 !important;
+    border-color: #003844 !important;
+}
+
+#specialbtn:hover{
+    background-color: #5093a2 !important;
+    border-color: #5093a2 !important;
+}
+
+img {
+    width:  60%;
+    height: 80%;
+    object-fit: cover; 
+}
+
+.form-check-input{
+    width: 1.2em !important;
+    height: 1.2em !important;
+}
+.form-check-input:checked {
+    background-color: #FFB100 !important;
+    border-color: #FFB100 !important;
+}
+
+.modalImg{
+    width:100%;
+    height: 100%;
+}
+
+#votingSuccessHeader{
+    color: #006C67 !important;
+}
+
+/* css for fade in animation for the cards */
+.fadeIn{
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+}
+

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/create.css">
+
+    <!-- AOS library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!--VUE 3 CDN-->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+        .floating { 
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        
+    }
+    
+    @keyframes floating {
+        0% { transform: translate(0,  0px); }
+        50%  { transform: translate(0, 15px); }
+        100%   { transform: translate(0, -0px); }   
+    }
+        body .testing{
+        font-family:'Roboto';
+        font-size:18px;
+        overflow:hidden;
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        -webkit-transform: translate3d(0,0,0);
+        }
+
+        div .testing{
+        display:inline-block;
+        overflow:hidden;
+        white-space:nowrap;
+        }
+
+        div:first-of-type .testing{    /* For increasing performance 
+                            ID/Class should've been used. 
+                            For a small demo 
+                            it's okaish for now */
+        animation: showup 5s infinite;
+        }
+
+        div:last-of-type .testing{
+        width:0px;
+        animation: reveal 10s infinite;
+        }
+
+        div:last-of-type span .testing{
+        margin-left:-355px;
+        animation: slidein 10s infinite;
+        }
+
+        @keyframes showup {
+            0% {opacity:0;}
+            20% {opacity:1;}
+            80% {opacity:1;}
+            100% {opacity:0;}
+        }
+
+        @keyframes slidein {
+            0% { margin-left:-800px; }
+            20% { margin-left:-800px; }
+            35% { margin-left:0px; }
+            100% { margin-left:0px; }
+        }
+
+        @keyframes reveal {
+            0% {opacity:0;width:0px;}
+            20% {opacity:1;width:0px;}
+            30% {width:355px;}
+            80% {opacity:1;}
+            100% {opacity:0;width:355px;}
+        }
+
+
+        p .testing{
+        font-size:12px;
+        color:#999;
+        margin-top:200px;
+        }
+
+    </style>
+
+    <title>About Us</title>
+</head>
+<body>
+        <div id="app">           
+        </div>
+          
+        <div class="form">
+          <!-- <div class="bg-light"> -->
+            
+            <div class="container py-5">
+              <div class="row h-100 align-items-center py-5">
+                <div class="col-lg-6" style="padding-top: 10%;">
+                    <div>
+                        <div>
+                            <div><h1>About Us</h1></div>
+                        </div>
+                    </div>
+                  <p class="lead text-muted" style="padding-top:5%;">
+                    SMOOVote is more than a voting website, it is a one-stop platform for entire elections, from campaigning to election creation, voting and results.  
+                  </p>
+
+                  <p class='testing'>
+                    Choose your leaders, choose your future.
+                  </p>
+
+                  
+                </div>
+                <div class="col-lg-6  d-lg-block" style="padding-top: 10%;">
+               
+                  
+                    <img src="img/bondue.jpg" alt="" class="img-fluid floating" style=" display: block; margin-left: auto; margin-right: auto;">
+                    
+                
+                </div>
+              </div>
+            </div>
+            
+          <!-- </div> -->
+          
+          <!-- <div class="bg-white py-5"> -->
+            <div class="container py-5">
+              <div style=" padding-bottom: 5%;" data-aos="fade-up" data-aos="fade-down" data-aos-duration="1500" class="row align-items-center mb-5">
+               
+
+
+
+                <div class="col-lg-6 "><i class="fa fa-bar-chart fa-2x mb-3 text-primary order-lg-last"></i>
+                  <h2 class="font-weight-light">Host elections</h2>
+                  <p class="font-italic text-muted mb-4">Do you have an upcoming election? Are you finding a platform to host it? Look no further, SMOOVote is here!</p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                </div>
+
+
+                <div class="col-lg-6  mx-auto order-lg-first">
+                  <img src="img/smusa.jpg" alt="" class="img-fluid mb-4 mb-lg-0 floating" style=" display: block; margin-left: auto; margin-right: auto; margin-top: 15px;">
+
+                 
+              </div>
+
+           
+             
+              </div>
+              <div style="padding-top: 5%; padding-bottom: 5%;" data-aos="fade-up" data-aos="fade-down" data-aos-duration="1500" class="row align-items-center">
+               
+                <div class="col-lg-6 "><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+                  <h2 class="font-weight-light">Campaign</h2>
+                  <p class="font-italic text-muted mb-4">Worried about getting no votes? Link your profile to your social media and connect with your voters.  Have no fear, SMOOVote is here! </p><a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Learn More</a>
+                  
+                </div>
+                <div class="col-lg-6 mx-auto"><img src="img/acf.jpg" alt="" class="img-fluid mb-4 mb-lg-0 floating" style=" display: block; margin-left: auto; margin-right: auto; margin-top: 15px;"></div>
+              </div>
+            </div>
+          <!-- </div> -->
+    </div>
+      
+      <div class="bg-light py-5 bottom">
+        <div class="container pt-5">
+          <div class="row mb-4">
+            <div class="col-lg-5">
+              <h2 class="display-4 font-weight-light">Our team</h2>
+              <p class="font-italic text-muted">Meet the creators of SMOOVote!</p>
+            </div>
+          </div>
+      
+          <div class="row text-center">
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+              <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babynolin.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Nolin</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <ul class="social mb-0 list-inline mt-3">
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- End-->
+      
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+              <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babyjiayi.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Jia Yi</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <ul class="social mb-0 list-inline mt-3">
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- End-->
+      
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+              <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babytanya.jpeg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Tanya</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <ul class="social mb-0 list-inline mt-3">
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- End-->
+      
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+              <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babykelvin.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                <h5 class="mb-0">Kelvin</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                <ul class="social mb-0 list-inline mt-3">
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                  <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- End-->
+
+            <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babybruno.jpg" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                  <h5 class="mb-0">Bruno</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                  <ul class="social mb-0 list-inline mt-3">
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- End-->
+
+              <!-- Team item-->
+            <div class="col-xl-4 col-sm-6 mb-5">
+                <div class="h-100 bg-white rounded shadow-sm py-5 px-4"><img style="height: 100px; width:  100px" src="img/babysathish.jpg" alt="" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                  <h5 class="mb-0">Sathish</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+                  <ul class="social mb-0 list-inline mt-3">
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <!-- End-->
+      
+          </div>
+        </div>
+      </div>
+      
+      
+      <footer class="bg-light pb-5">
+        <div class="container text-center">
+          <p class="font-italic text-muted mb-0">&copy; Copyrights SMOOVote 2021 All rights reserved.</p>
+        </div>
+      </footer>
+
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+      <script>
+        AOS.init();
+      </script>
+
+      <script src="js/navbar.js" type="module"></script>
+    
+</body>
+</html>

@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
+
+html{
+  height: 100%;
+  margin: 0;
+}
+@media only screen and (max-width: 426px) {
+
+  .welcome{
+
+    font-size: 8vw !important;
+  }
+
+  p {
+    font-size: 18vw !important;
+  }
+
+  h1{
+    font-size: 5vw !important;
+  }
+
+
+}
+body {
+  font-family: Helvetica, Sans-Serif;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* height:100%; */
+
+  /* original */
+  /* background-image: url("https://images.unsplash.com/photo-1633627971237-6ecbfc65a645?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80"); */
+
+  /*  windows */
+  /* background-image: url("https://images.unsplash.com/photo-1630710577133-8c3ca9da67f9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"); */
+
+  /*  architecture */
+  background-image: url("../../Images_Icons/bridger-tower-bI8Iv2SS4zE-unsplash\ \(1\).jpg");
+
+    /*  windows */
+    /* background-image: url("https://images.unsplash.com/photo-1630710577133-8c3ca9da67f9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"); */
+   
+    /*  architecture */
+    background-image: url("../img/bg.png")
+
+    /*  laptop */
+    /* background-image: url("https://images.unsplash.com/photo-1582056615449-5dcb2332b3b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80"); */
+  
+
+}
+
+.keywelcomelogo {
+  -webkit-text-stroke: 1px black;
+  background: url("https://images.unsplash.com/photo-1546026502-797e11a59f50?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGF0dGVybnN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=60");
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-position: 0 0;
+  animation: animationhome 30s linear infinite;
+  /* font-family: sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: "Scheherazade New", serif;
+}
+
+@keyframes animationhome {
+  100% {
+    background-position: 2000px 0;
+  }
+}
+
+.info {
+    color:black;
+    position:absolute;
+    top:28%;
+    left: 8% ;
+    font-size: 50px;
+    
+}
+
+.loginform {
+  width: 300px;
+}
+
+.btn {
+  background-color: rgb(3, 33, 40) !important;
+  color: white !important;
+}
+
+.btn:hover,
+.navbar-toggler:hover {
+  background-color: rgba(255, 235, 198, 0.5) !important;
+}

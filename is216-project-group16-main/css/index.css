@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* nav bar */
+.navbar {
+    background-color: #333;
+    padding: 1.5vh 15px;
+    }
+
+
+.nav-button, .nav-button:hover  {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 1.5vh 0;
+}
+
+.signup, .signup:hover{
+    border: 1px solid white;
+    padding: 1.5vh 20px;
+    float:right;
+}
+
+
+/* Change the sign up button color to black on hover */
+.signup:hover {
+    background-color: #111;
+}
+
+.home-img {
+    height: 90vh;
+    width: 100%;
+}
+
+.login {
+    width: 40%;
+}
+
+form {
+    margin-top:5%;
+    margin-bottom:5%;
+}
+
+input {
+    width: 50%;
+}
+
+.login-btn, .login-btn:hover {
+    color:white;
+    text-decoration: none;
+}
